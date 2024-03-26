@@ -1,0 +1,7 @@
+
+GET http://localhost:8000/api/v0/similarity
+Content-Type: application/json
+
+{
+    "text":"companies backed by y combinator"
+}
