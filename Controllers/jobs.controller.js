@@ -105,14 +105,21 @@ const getAllJobs = async (req, res, next) => {
       query.job_posted = { $gte: daysAgo }; // Jobs posted within the last 'days_old' days
     }
     // Extend with more filters as needed
-
+    let withoutLinkedInQuery = { ...query, job_url: { $not: /linkedin\.com/ } };
     // Find jobs based on the constructed query, excluding the 'job_embedding' field, and populate the 'company' field
-    let result = await Jobs.find(query, { job_embedding: 0 })
-      .limit(100)
-      .populate("company");
+    let jobsWithoutLinkedIn = await Jobs.find(withoutLinkedInQuery, {
+      job_embedding: 0,
+    }).limit(100);
 
+    // jobs with linkedin
+    let withLinkedInQuery = { ...query, job_url: /linkedin\.com/ };
+    jobsWithLinkedIn = await Jobs.find(withLinkedInQuery, {
+      job_embedding: 0,
+    }).limit(100);
+
+    let combinedResults = [...jobsWithoutLinkedIn, ...jobsWithLinkedIn];
     // Send the results as a response
-    res.send({ result });
+    res.send({ combinedResults });
   } catch (error) {
     // Handle errors gracefully and log them
     console.error(error);
