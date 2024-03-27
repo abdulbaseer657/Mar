@@ -3,7 +3,7 @@ const express = require("express");
 const morgan = require("morgan");
 const createError = require("http-errors");
 require("dotenv").config();
-require("./helpers/init_mongodb");
+require("./Helpers/init_mongodb");
 const jobs = require("./Routes/jobs.route");
 const similarity = require("./Routes/similarity.route");
 // Create an Express application
