@@ -117,9 +117,9 @@ const getAllJobs = async (req, res, next) => {
       job_embedding: 0,
     }).limit(100);
 
-    let combinedResults = [...jobsWithoutLinkedIn, ...jobsWithLinkedIn];
+    let result = [...jobsWithoutLinkedIn, ...jobsWithLinkedIn];
     // Send the results as a response
-    res.send({ combinedResults });
+    res.send({ result });
   } catch (error) {
     // Handle errors gracefully and log them
     console.error(error);
