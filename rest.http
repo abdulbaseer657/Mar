@@ -1,13 +1,35 @@
 
 
-POST http://localhost:8000/api/v0/user/login
+# POST http://localhost:8000/api/v0/jobpost/create
+# Content-Type: application/json
+
+# {
+#   "title": "Software Engineer",
+#   "username": "mustafa@gmail.com",
+#   "field": "Technology",
+#   "description": "We are looking for a skilled software engineer",
+#   "startDate": "2024-04-15",
+#   "deadline": "2024-05-15",
+#   "skills": "JavaScript, React, Node.js"
+# }
+
+
+
+PUT http://localhost:8000/api/v0/jobpost/updateapplicant/661b90611c77484cdb28bd71
 Content-Type: application/json
 
 {
-    "username": "mustafa@gmail.com",
-    "password": "12345"
+  "username": "applicant124",
+  "score": 95
 }
 
+# POST http://localhost:8000/api/v0/user/login
+# Content-Type: application/json
+
+# {
+#     "username": "mustafa@gmail.com",
+#     "password": "12345"
+# }
 
 
 # POST http://localhost:8000/api/v0/user/register

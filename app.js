@@ -5,6 +5,7 @@ const createError = require("http-errors");
 require("dotenv").config();
 require("./Helpers/init_mongodb");
 const user = require("./Routes/user.route");
+const jobPostRouter = require("./Routes/jobpost.route");
 // Create an Express application
 const app = express();
 
@@ -27,6 +28,7 @@ app.get("/", async (req, res, next) => {
 
 // Define routes for authentication and protected API endpoints
 app.use("/api/v0/", user);
+app.use("/api/v0/", jobPostRouter);
 
 // Handle 404 Not Found errors
 app.use(async (req, res, next) => {
