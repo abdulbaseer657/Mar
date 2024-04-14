@@ -4,8 +4,7 @@ const morgan = require("morgan");
 const createError = require("http-errors");
 require("dotenv").config();
 require("./Helpers/init_mongodb");
-const jobs = require("./Routes/jobs.route");
-const similarity = require("./Routes/similarity.route");
+const user = require("./Routes/user.route");
 // Create an Express application
 const app = express();
 
@@ -23,11 +22,11 @@ app.use(express.urlencoded({ extended: true }));
 // Define a route for the root endpoint
 app.get("/", async (req, res, next) => {
   console.log(req.headers["authorization"]);
-  res.send("status: Active, Hello from gradstem server");
+  res.send("status: Active, Hello from  server");
 });
 
 // Define routes for authentication and protected API endpoints
-app.use("/api/v0/", jobs, similarity);
+app.use("/api/v0/", user);
 
 // Handle 404 Not Found errors
 app.use(async (req, res, next) => {
